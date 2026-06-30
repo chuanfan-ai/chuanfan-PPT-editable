@@ -1,0 +1,4 @@
+interface:
+  display_name: "chuanfan-PPT-editable"
+  short_description: "融合 HTML 高保真与可编辑 PPTX 的中文演示 skill"
+  default_prompt: "用 chuanfan-PPT-editable 做一份 6 页 PPT，主题是高校如何拥抱 AI"
