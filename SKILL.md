@@ -1,6 +1,6 @@
 ---
 name: chuanfan-ppt-editable
-description: Create high-aesthetic, Chinese-first, editable presentation decks with an HTML-first workflow and best-effort PPTX/PDF export. Use when the user asks to make PPT, slides, deck, lecture slides, report decks, roadshow decks, courseware, or wants to combine Huashu-style HTML design quality with Guizang-style Swiss/magazine presentation aesthetics while preserving editable PowerPoint text where practical.
+description: Create high-aesthetic, Chinese-first, editable presentation decks with an HTML-first workflow, stable visual-anchor planning, meaningful real/generated imagery, and best-effort PPTX/PDF export. Use when the user asks to make PPT, slides, deck, lecture slides, report decks, roadshow decks, courseware, visually rich case-based presentations, or wants to combine Huashu-style HTML design quality with Guizang-style Swiss/magazine presentation aesthetics while preserving editable PowerPoint text where practical.
 ---
 
 # chuanfan-PPT-editable
@@ -14,7 +14,7 @@ Default to this sequence:
 1. Understand the audience, topic, source material, output format, and editability requirement.
 2. Convert the material into a page-level narrative table.
 3. Pick a visual system based on the content, not personal taste.
-4. Decide image needs page by page.
+4. Create a page-level visual-anchor plan: memory point, visual carrier, source plan, fallback, and final asset path.
 5. Build an HTML deck as the source artifact unless the user only needs a conventional PPTX.
 6. Export PDF automatically when tooling is available.
 7. Export editable PPTX when requested or clearly useful, while preserving editable text and simple shapes.
@@ -30,12 +30,14 @@ If the user says "just do it" or gives only a topic, make conservative assumptio
 
 Never sacrifice the main message to preserve decorative editability. Preserve titles, body copy, labels, diagrams, and simple charts as editable objects first; allow only background art, photos, and complex visual effects to become images.
 
+For PPTX delivery, do not flatten an entire designed slide into a screenshot or single full-slide PNG. Treat real photos, logos, screenshots, and generated artwork as image objects, but rebuild titles, body copy, captions, cards, diagrams, arrows, and labels as editable PowerPoint text/shapes.
+
 ## Page Planning
 
 Before designing, create a concise table:
 
 ```text
-Page -> role -> key message -> layout -> image need -> editability priority
+Page -> role -> key message -> layout -> visual anchor -> visual carrier -> source plan -> fallback -> editability priority
 ```
 
 Use one page for one job:
@@ -51,6 +53,41 @@ Use one page for one job:
 - closing
 
 Avoid continuous same-shape card pages. Every 3-4 pages, change rhythm with a hero page, data page, visual diagram, quote, or transition page.
+
+## Visual Anchor Planning
+
+Every page must receive a visual decision, but not every page needs a picture. Decide what should carry the audience's memory of the page:
+
+- Brand anchor: logo, wordmark, signature product, mascot, packaging, object, or icon that immediately identifies the case.
+- Real image: named brand, product, place, person, event, campus, factory, store, or screenshot.
+- Generated image: abstract future scene, concept cover, neutral metaphor, or non-factual illustrative scene.
+- Editable diagram: process, matrix, flywheel, comparison, roadmap, capability map, data relationship, or agent workflow.
+- Typography-only: quote, strong claim, transition, closing, or page where words are the intended impact.
+- No extra visual asset: dense source proof, appendix-like content, or a page where visuals would distract.
+
+For case pages, brand pages, people pages, product pages, and place pages, first identify the most precise brand anchor. It may be a small logo, mascot, product, packaging, or signature object; do not default to a large photo. Use a large scene photo only when the argument is about place, channel, scale, or environment. For abstract pages, prefer editable diagrams before generated image infographics.
+
+For mascot, character, product, packaging, red envelope, plush toy, symbolic object, or logo-like anchors, prefer an isolated subject asset: source image -> subject cutout -> transparent PNG -> independent image object. Examples include LABUBU, Snow King, CS50 Duck, branded red envelopes, and signature packaging. Keep the original background only when the background itself proves channel, place, scale, or usage context.
+
+Before building slides, write a compact visual plan:
+
+```text
+Page -> memory point -> visual carrier -> asset/source query -> fallback -> final file
+```
+
+Use this plan during construction and delivery. Do not invent or fake real-world visuals. If a real asset cannot be sourced reliably, use a clearly non-factual generated concept image or an editable diagram instead.
+
+Do not place every visual in the same fixed slot. Choose placement from the page job:
+
+- Hero or opening page: full-bleed, oversized, or background visual with strong title overlay.
+- Company/context page: real store/product image may lead the slide, with analysis text beside or below it.
+- Framework page: use a centered editable diagram; avoid decorative photos.
+- Case page: choose the smallest sufficient proof. A logo + representative object can be stronger than a large scene photo when the point is brand cognition; use a collage only when multiple evidence types are necessary.
+- Takeaway page: use action cards, roadmap, or typography; a small supporting visual is optional.
+
+During QA, scan the contact sheet. If three or more pages repeat the same text-left/image-right layout without a content reason, redesign the rhythm before delivery.
+
+Also inspect visual taste, not just asset existence. A page fails QA if real assets look like a raw collage, compete with the title, use mismatched crops, or appear included only to prove they were found. Prefer one strong, well-cropped proof image or one clean subject cutout over several weak images.
 
 ## Style Selection
 
@@ -89,6 +126,7 @@ Default rules:
 - Use structured diagrams for abstract ideas: maps, matrices, timelines, capability systems, flywheels, and roadmaps.
 - Use generated images only for concept visuals, cover art, neutral scene-setting, or redesigned information graphics.
 - Do not add decorative stock-style images that do not carry information.
+- Keep a local asset manifest for every non-trivial image: page, visual anchor, source/generation note, file path, crop/ratio, and fallback decision.
 
 For editable PPTX, prefer diagrams made from text and shapes over flattened image infographics.
 

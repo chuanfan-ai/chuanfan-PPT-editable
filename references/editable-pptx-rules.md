@@ -23,6 +23,7 @@ These can be images:
 - photos
 - generated cover art
 - screenshots
+- transparent subject cutouts from real assets
 - complex backgrounds
 - visual textures
 - decorative abstract artwork
@@ -30,6 +31,10 @@ These can be images:
 - highly complex information graphics
 
 Tell the user when important elements are flattened.
+
+Do not flatten the whole slide merely because it is easier. A PPTX slide should not consist of one screenshot-like background containing all text. If the output is meant to be editable, keep text hierarchy, diagrams, cards, and labels as native PowerPoint objects and use images only for the actual visual assets.
+
+Subject cutouts such as mascots, products, packaging, red envelopes, and symbolic objects may be image objects. They should stay as separate movable/resizable PNGs with transparent backgrounds whenever possible, not merged into a full-slide bitmap.
 
 ## HTML Constraints
 
