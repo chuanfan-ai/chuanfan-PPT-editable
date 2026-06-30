@@ -19,6 +19,10 @@ Run this before delivery.
 - There are no generic emoji bullets.
 - There is no default purple-blue AI gradient unless it is intentional.
 - Images have information value.
+- Each visual page has search keywords or a clear no-search reason.
+- Real/generative image candidates passed relevance and quality checks before use.
+- Selected images match the page layout role instead of being direct search-result inserts.
+- Mascots, products, packages, red envelopes, and symbolic objects are cut out when a transparent subject would improve the layout.
 - Diagrams are understandable without narration.
 
 ## Editability

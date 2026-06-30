@@ -1,4 +1,4 @@
 interface:
   display_name: "chuanfan-PPT-editable"
-  short_description: "融合 HTML 高保真、视觉锚点配图、主体抠图与可编辑 PPTX 的中文演示 skill"
-  default_prompt: "用 chuanfan-PPT-editable 做一份 6 页 PPT，主题是高校如何拥抱 AI，并为每页设计合适的视觉锚点和主体抠图策略"
+  short_description: "融合 HTML 高保真、视觉锚点、候选配图过滤、主体抠图与可编辑 PPTX 的中文演示 skill"
+  default_prompt: "用 chuanfan-PPT-editable 做一份 6 页 PPT，主题是高校如何拥抱 AI，并为每页设计视觉锚点、配图候选池和主体抠图策略"

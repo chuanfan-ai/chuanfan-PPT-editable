@@ -1,6 +1,6 @@
 ---
 name: chuanfan-ppt-editable
-description: Create high-aesthetic, Chinese-first, editable presentation decks with an HTML-first workflow, stable visual-anchor planning, meaningful real/generated imagery, and best-effort PPTX/PDF export. Use when the user asks to make PPT, slides, deck, lecture slides, report decks, roadshow decks, courseware, visually rich case-based presentations, or wants to combine Huashu-style HTML design quality with Guizang-style Swiss/magazine presentation aesthetics while preserving editable PowerPoint text where practical.
+description: Create high-aesthetic, Chinese-first, editable presentation decks with an HTML-first workflow, stable visual-anchor planning, dual-channel image sourcing, candidate filtering, subject cutouts, and best-effort PPTX/PDF export. Use when the user asks to make PPT, slides, deck, lecture slides, report decks, roadshow decks, courseware, visually rich case-based presentations, or wants to combine Huashu-style HTML design quality with Guizang-style Swiss/magazine presentation aesthetics while preserving editable PowerPoint text where practical.
 ---
 
 # chuanfan-PPT-editable
@@ -14,11 +14,13 @@ Default to this sequence:
 1. Understand the audience, topic, source material, output format, and editability requirement.
 2. Convert the material into a page-level narrative table.
 3. Pick a visual system based on the content, not personal taste.
-4. Create a page-level visual-anchor plan: memory point, visual carrier, source plan, fallback, and final asset path.
-5. Build an HTML deck as the source artifact unless the user only needs a conventional PPTX.
-6. Export PDF automatically when tooling is available.
-7. Export editable PPTX when requested or clearly useful, while preserving editable text and simple shapes.
-8. Verify the rendered deck before delivery.
+4. Create a page-level visual-anchor and image-acquisition plan: memory point, carrier, search keywords, generation prompt, fallback, and asset role.
+5. Build a filtered candidate asset pool before layout: real search assets, generated concept assets, cutout candidates, and explicit no-image decisions.
+6. Select `selected_images` during layout, not during search. Match image choice to page role and visual system.
+7. Build an HTML deck as the source artifact unless the user only needs a conventional PPTX.
+8. Export PDF automatically when tooling is available.
+9. Export editable PPTX when requested or clearly useful, while preserving editable text and simple shapes.
+10. Verify the rendered deck before delivery.
 
 If the user says "just do it" or gives only a topic, make conservative assumptions and proceed. State those assumptions in the final delivery note.
 
@@ -72,7 +74,7 @@ For mascot, character, product, packaging, red envelope, plush toy, symbolic obj
 Before building slides, write a compact visual plan:
 
 ```text
-Page -> memory point -> visual carrier -> asset/source query -> fallback -> final file
+Page -> memory point -> visual carrier -> search keywords -> generation prompt -> fallback -> final file
 ```
 
 Use this plan during construction and delivery. Do not invent or fake real-world visuals. If a real asset cannot be sourced reliably, use a clearly non-factual generated concept image or an editable diagram instead.
@@ -88,6 +90,28 @@ Do not place every visual in the same fixed slot. Choose placement from the page
 During QA, scan the contact sheet. If three or more pages repeat the same text-left/image-right layout without a content reason, redesign the rhythm before delivery.
 
 Also inspect visual taste, not just asset existence. A page fails QA if real assets look like a raw collage, compete with the title, use mismatched crops, or appear included only to prove they were found. Prefer one strong, well-cropped proof image or one clean subject cutout over several weak images.
+
+## Image Acquisition Pipeline
+
+When a deck needs meaningful visuals, use the pipeline below before rendering:
+
+1. Generate 1-3 page-specific image search keywords from the page message and visual anchor. Prefer concrete entity queries over abstract nouns: brand + product, brand + mascot, brand + packaging, company + store, person + organization, course + artifact.
+2. Use two acquisition channels:
+   - Real asset channel: user-provided files, official assets, screenshots, public search results, product pages, press pages, and stable attributable sources.
+   - Generated asset channel: concept visuals, future scenes, neutral metaphors, abstract covers, and non-factual illustrations.
+3. Put every useful result into a candidate pool. Do not insert images directly into slides from search results.
+4. Filter candidates in two passes:
+   - Relevance: does the candidate match the current page's concrete subject, proof, emotion, or memory point?
+   - Quality: is it clear, high-resolution enough, well-composed, low-watermark, low-noise, not overloaded with text, and suitable for the intended crop or cutout?
+5. Decide whether each retained candidate should become a normal crop, small proof mark, hero image, screenshot, grid item, subject cutout, or be rejected.
+6. Let the layout stage choose `selected_images` from the filtered pool. A candidate can be good but still unused if the layout needs typography, a diagram, or a smaller brand anchor.
+7. If no candidate passes relevance and quality, do not force a weak image. Use an editable diagram, typography-only page, or explicit no-extra-asset decision.
+
+Record the candidate pool in the asset manifest:
+
+```text
+page | anchor | query_or_prompt | channel | source | local_file | relevance | quality | role | selected | notes
+```
 
 ## Style Selection
 
